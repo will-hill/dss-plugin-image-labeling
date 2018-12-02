@@ -1,0 +1,37 @@
+{
+    "meta": {
+        "label": "image-labelling",
+        "description": "Manually label images to create datasets for use in supervised learning",
+        "icon": "icon-picture"
+    },
+    "baseType": "STANDARD",
+    "hasBackend": "true",
+    "params": [
+        {
+            "name": "folder",
+            "type": "FOLDER",
+            "label": "Images folder",
+            "description": "",
+            "mandatory": true,
+            "canSelectForeign": true
+        },
+        {
+            "name": "dataset",
+            "type": "DATASET",
+            "label": "Dataset for labels",
+            "description": "",
+            "mandatory": true,
+            "canSelectForeign": false
+        },
+        {
+            "name": "categories",
+            "type": "KEY_VALUE_LIST",
+            "label": "Categories",
+            "description": "Category name → optional description",
+            "mandatory": true
+        }
+    ],
+    "roles": [
+        {"type": "FOLDER", "targetParamsKey": "folder"}
+    ]
+}
