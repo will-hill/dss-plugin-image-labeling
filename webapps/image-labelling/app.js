@@ -14,7 +14,7 @@ function checkParameters() {
         if (p.mandatory) {
             let val = getWebAppConfig()[p.name];
             if (val == undefined || val == "") {
-                throw new Error("Mandatory parameter " + p.name + " not specified");
+                throw new Error("Mandatory parameter '" + p.name + "' not specified");
             }
         }
     });
