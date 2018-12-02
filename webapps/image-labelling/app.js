@@ -2,7 +2,7 @@ let categories = (dataiku.getWebAppConfig().categories||[]).map(it => ({name: it
 let currentPath;
 
 function drawApp(allItems) {
-    checkWebAppParameters();
+    dataiku.checkWebAppParameters();
     drawCategories(categories);
     $('#skip').click(next)
     next();
