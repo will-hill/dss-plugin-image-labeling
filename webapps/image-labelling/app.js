@@ -2,17 +2,16 @@ let categories = (getWebAppConfig().categories||[]).map(it => ({name: it.from, d
 let currentPath;
 
 function drawApp(allItems) {
-    if (!checkParameters()) {
-        return;
-    }
+    checkParameters());
     drawCategories(categories);
     $('#skip').click(next)
     next();
 }
 
 function checkParameters() {
-    console.warn(getWebAppDesc());
-    return true;
+    getWebAppDesc().params.forEach(p => {
+        console.warn(p);
+    })
 }
 
 function drawCategories(categories) {
