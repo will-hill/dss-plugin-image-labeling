@@ -1,7 +1,7 @@
 {
     "meta": {
-        "label": "image-labelling",
-        "description": "Manually label images to create datasets for use in supervised learning",
+        "label": "Image labelling",
+        "description": "Manually classify images for use in supervised learning",
         "icon": "icon-picture"
     },
     "baseType": "STANDARD",
