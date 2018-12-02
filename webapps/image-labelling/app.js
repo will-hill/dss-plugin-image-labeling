@@ -5,7 +5,7 @@ function drawApp(allItems) {
     try {
         dataiku.checkWebAppParameters();
     } catch (e) {
-        alert(e.message+'. Go to settings tab');
+        alert(e.message + ' Go to settings tab');
     }
     drawCategories(categories);
     $('#skip').click(next)
