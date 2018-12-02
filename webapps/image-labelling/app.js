@@ -2,7 +2,7 @@ let categories = (getWebAppConfig().categories||[]).map(it => ({name: it.from, d
 let currentPath;
 
 function drawApp(allItems) {
-    checkParameters());
+    checkParameters();
     drawCategories(categories);
     $('#skip').click(next)
     next();
