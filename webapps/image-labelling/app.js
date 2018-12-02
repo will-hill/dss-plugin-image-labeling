@@ -1,4 +1,4 @@
-let categories = (getWebAppConfig().categories||[]).map(it => ({name: it.from, description: it.to}));
+let categories = (dataiku.getWebAppConfig().categories||[]).map(it => ({name: it.from, description: it.to}));
 let currentPath;
 
 function drawApp(allItems) {
@@ -58,7 +58,7 @@ function updateProgress(resp) {
 
 const webappBackend = (function() {
     function getUrl(path) {
-        return getWebAppBackendUrl(path);
+        return dataiku.getWebAppBackendUrl(path);
     }
     function get(path, args, done, fail) {
         return $.getJSON(getUrl(path), args, done, fail);
