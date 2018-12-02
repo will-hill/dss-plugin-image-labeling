@@ -37,7 +37,7 @@ function next() {
 
 function drawItem() {
     if (!currentPath || !currentPath.length) {
-        $('#app').html('<div id="done">The End</div>')
+        $('#app').html('<div id="done">The End</div><p>All the images were labelled (or skipped, refresh to see the skipped ones)')
     } else {
         webappBackend.get('get-image-base64', {path: currentPath}, function(resp) {
             let contentType = 'image/png';
