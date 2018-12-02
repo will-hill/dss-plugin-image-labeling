@@ -11,7 +11,7 @@ function drawApp(allItems) {
 function checkParameters() {
     getWebAppDesc().params.forEach(p => {
         console.warn(p);
-    })
+    });
 }
 
 function drawCategories(categories) {
