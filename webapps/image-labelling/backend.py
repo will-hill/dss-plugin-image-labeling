@@ -10,7 +10,7 @@ dataset = dataiku.Dataset(dataset_name)
 folder = dataiku.Folder(folder_id)
 
 current_df = dataset.get_dataframe()
-if 'path' not in current_df:
+if 'path' not in current_df or 'class' not in current_df or 'comment' not in current_df:
     raise ValueError("The target dataset should have a columns: 'path', 'class' and 'comment'")
 
 labelled = set(current_df['path'])
