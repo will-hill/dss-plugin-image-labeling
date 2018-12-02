@@ -2,22 +2,10 @@ let categories = (getWebAppConfig().categories||[]).map(it => ({name: it.from, d
 let currentPath;
 
 function drawApp(allItems) {
-    checkParameters();
+    checkWebAppParameters();
     drawCategories(categories);
     $('#skip').click(next)
     next();
-}
-
-function checkParameters() {
-    getWebAppDesc().params.forEach(p => {
-        console.warn(p);
-        if (p.mandatory) {
-            let val = getWebAppConfig()[p.name];
-            if (val == undefined || val == "") {
-                throw new Error("Mandatory parameter '" + p.name + "' not specified.");
-            }
-        }
-    });
 }
 
 function drawCategories(categories) {
