@@ -11,7 +11,7 @@ folder = dataiku.Folder(folder_id)
 
 current_df = dataset.get_dataframe()
 if 'path' not in current_df:
-    raise ValueError("The target dataset should have a path")
+    raise ValueError("The target dataset should have a columns: 'path', 'class' and 'comment'")
 
 labelled = set(current_df['path'])
 all_paths = set(folder.list_paths_in_partition())
