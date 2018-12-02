@@ -11,6 +11,12 @@ function drawApp(allItems) {
 function checkParameters() {
     getWebAppDesc().params.forEach(p => {
         console.warn(p);
+        if (p.mandatory) {
+            let val = getWebAppConfig()[p.name];
+            if (val == undefined || val == "") {
+                throw new Error("Mandatory parameter " + p.name + " not specified")
+            }
+        }
     });
 }
 
