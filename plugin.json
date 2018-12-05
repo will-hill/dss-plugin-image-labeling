@@ -1,7 +1,6 @@
 {
     "id" : "image-labelling",
     "version" : "0.0.1",
-
     "meta" : {
         "label" : "Plugin image labelling",
         "description" : "",
