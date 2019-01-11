@@ -7,8 +7,7 @@
         "author" : "Dataiku",
         "icon" : "icon-puzzle-piece",
         "licenseInfo" : "Apache Software License",
-        // TODO URL where the user can learn more about the plugin
-        "url" : "https://www.dataiku.com",
+        "url" : "https://www.dataiku.com/dss/plugins/info/image-labelling.html",
         "tags" : ["images", "deep learning"]
     }
 }
