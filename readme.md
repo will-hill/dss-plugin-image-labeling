@@ -1,4 +1,4 @@
-# Plugin image labelling
+# Image labelling plugin
 
 This Dataiku DSS plugin helps you label images contained in a DSS managed folder.
 
