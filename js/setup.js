@@ -1,6 +1,8 @@
 var app = angular.module('labelling.setup.module', []);
 
-app.controller('FoobarController', function($scope) {
+app.controller('LabellingSetupController', function($scope) {
+    $scope.folderParam = {"type":"FOLDER", "name":"folder"};
+    $scope.datasetParam = {"type":"DATASET", "name":"dataset"};
     var updateChoices = function() {
         // the parameter to callPythonDo() is passed to the do() method as the payload
         // the return value of the do() method comes back as the data parameter of the fist function()
