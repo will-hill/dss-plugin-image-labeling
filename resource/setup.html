@@ -1,23 +1,16 @@
-<div ng-controller="MyCustomFormController" style="margin: 10px 0px;">
-    <input name="useToken" type="checkbox" ng-model="config.useToken">Use token</input>
-    <label for="login" ng-if="!config.useToken">
-        <div style="width: 80px; display: inline-block;">Login</div>
-        <input name="login" type="text" ng-model="config.login" style="width: 80px;" />
-    </label>
-    <label for="password" ng-if="!config.useToken">
-        <div style="width: 80px; display: inline-block;">Password</div>
-        <input name="password" type="password" ng-model="config.password" style="width: 80px;"/>
-    </label>
-    <label for="token" ng-if="config.useToken">
-        <div style="width: 80px; display: inline-block;">Token</div>
-        <input name="token" type="text" ng-model="config.token" style="width: 80px;"/>
-    </label>
-    <label for="fetchSize" >
-        <div style="width: 80px; display: inline-block;">Fetch size</div>
-        <input name="fetchSize" type="number" ng-model="config.fetchSize" style="width: 80px;"/>
-    </label>
-    <div>
-        <span>{{checkResult.hasAuthentication == null ? 'Not checked' : (checkResult.hasAuthentication ? 'Form complete' : 'Fill credentials')}}</span>
-        <button ng-click="check()" class="btn btn-default">Recheck</button>
+<div ng-controller="FoobarController">
+    <div class="control-group" >
+        <label class="control-label">Column</label>
+        <div class="controls" > <!-- basic text field with typeahead for the column selection, as you would get for a COLUMN parameter in a generated form -->
+            <input type="text" ng-model="config.filterColumn" ng-required="true" bs-typeahead="columnsPerInputRole['input_role']"/>
+            <span class="help-inline">Column to filter on</span>
+        </div>
+    </div>
+    <div class="control-group" >
+        <label class="control-label">Value</label>
+        <div class="controls" >
+            <select dku-bs-select="{liveSearch:true}" ng-model="config.filterValue" ng-options="v for v in choices" />
+            <span class="help-inline">Value to keep</span>
+        </div>
     </div>
 </div>
