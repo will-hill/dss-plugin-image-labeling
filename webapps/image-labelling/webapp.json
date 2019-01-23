@@ -6,7 +6,7 @@
     },
     "baseType": "STANDARD",
     "hasBackend": "true",
-    "standardWebAppLibraries" : ["jquery", "dataiku", "bootstrap"],
+    "standardWebAppLibraries" : ["jquery", "dataiku", "bootstrap", "font_awesome"],
     
     "paramsTemplate" : "setup.html",
     "paramsModule" : "labelling.setup.module",
