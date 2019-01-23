@@ -1,21 +1,16 @@
 <div id="app">
-    <div class="left">
-        <div style="height: 15px"></div>
-        <div id="item-to-classify"></div>
-        <div id="category-buttons"></div>
-        <div>
-            <textarea id="comment" placeholder="Comment..."></textarea>
-        </div>
-        <div>
-            <button id="skip">Skip</button>
-        </div>
-        <div id="progress">
-            Labelled <span id="labelled">?</span> 
-            out of <span id="total">?</span>
-            (skipped <span id="skipped">?</span>)
-        </div>
+    <div id="item-to-classify"></div>
+    <div id="skip-buttons">
+        <button id="skip" class="btn btn-default skip-button">Skip</button>
     </div>
-    <div class="right">
-        <ul id="category-descriptions"></ul>
+    <div id="category-buttons">
+    </div>
+    <div id="comment">
+        <textarea  class="comment-area" placeholder="Comment..."></textarea>
+    </div>
+    <div id="progress">
+        Labelled <span id="labelled">?</span> 
+        out of <span id="total">?</span>
+        (skipped <span id="skipped">?</span>)
     </div>
 </div>
