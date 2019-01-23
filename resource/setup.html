@@ -5,7 +5,7 @@
         <span>Dataset has the required <em>path</em>, <em>class</em> and <em>comment</em> columns</span>
     </div>
     <div ng-if="datasetCheckResult && !datasetCheckResult.ok" class="alert alert-error">
-        <span>{{datasetCheckResult.reason}}</span>
+        <span>Incorrect dataset : {{datasetCheckResult.reason}}</span>
     </div>
     <div ng-if="datasetCheckError" class="alert alert-error">
         <pre>{{datasetCheckError}}</pre>
