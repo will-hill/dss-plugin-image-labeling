@@ -11,31 +11,7 @@
     "paramsTemplate" : "setup.html",
     "paramsModule" : "labelling.setup.module",
     "paramsPythonSetup" : "setup.py",
-    "params": [
-        {
-            "name": "folder",
-            "type": "FOLDER",
-            "label": "Images folder",
-            "description": "",
-            "mandatory": true,
-            "canSelectForeign": true
-        },
-        {
-            "name": "dataset",
-            "type": "DATASET",
-            "label": "Dataset for labels",
-            "description": "Must have path, class and comment columns",
-            "mandatory": true,
-            "canSelectForeign": false
-        },
-        {
-            "name": "categories",
-            "type": "KEY_VALUE_LIST",
-            "label": "Categories",
-            "description": "Category name → optional description",
-            "mandatory": true
-        }
-    ],
+    "params": [],
     "roles": [
         {"type": "FOLDER", "targetParamsKey": "folder"}
     ]
