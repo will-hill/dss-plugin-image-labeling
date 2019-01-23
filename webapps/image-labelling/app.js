@@ -11,7 +11,7 @@ function drawApp(categories) {
     try {
         $('[data-toggle="tooltip"]').tooltip(); 
     } catch (e) {
-        console.error(e);
+        console.warn(e);
     } 
     $('#skip').click(next)
     next();
