@@ -9,7 +9,7 @@
     "standardWebAppLibraries" : ["jquery", "dataiku", "bootstrap"],
     
     "paramsTemplate" : "setup.html",
-    "paramsModule" : "labellingSetup",
+    "paramsModule" : "labelling.setup.module",
     "paramsPythonSetup" : "setup.py",
     "params": [
         {
