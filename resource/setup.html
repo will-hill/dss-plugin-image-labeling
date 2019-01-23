@@ -1,5 +1,14 @@
 <div ng-controller="LabellingSetupController">
     <div autoconfig-form-element param-desc="folderParam" model="config" columns-per-input-role="columnsPerInputRole"/>
     <div autoconfig-form-element param-desc="datasetParam" model="config" columns-per-input-role="columnsPerInputRole"/>
+    <div ng-if="datasetCheckResult && datasetCheckResult.ok" class="alert alert-success">
+        <span>Dataset has the required <em>path</em>, <em>class</em> and <em>comment</em> columns</span>
+    </div>
+    <div ng-if="datasetCheckResult && !datasetCheckResult.ok" class="alert alert-error">
+        <span>{{datasetCheckResult.reason}}</span>
+    </div>
+    <div ng-if="datasetCheckError" class="alert alert-error">
+        <pre>{{datasetCheckError}}</pre>
+    </div>
     <div autoconfig-form-element param-desc="categoriesParam" model="config" columns-per-input-role="columnsPerInputRole"/>
 </div>
