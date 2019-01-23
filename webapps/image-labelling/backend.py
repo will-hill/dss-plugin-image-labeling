@@ -2,6 +2,7 @@ import dataiku
 from flask import request
 from base64 import b64encode
 from dataiku.customwebapp import *
+import pandas as pd
 
 dataset_name = get_webapp_config()["dataset"]
 folder_id = get_webapp_config()["folder"]
