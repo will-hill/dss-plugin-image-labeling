@@ -9,10 +9,16 @@ folder_id = get_webapp_config()["folder"]
 dataset = dataiku.Dataset(dataset_name)
 folder = dataiku.Folder(folder_id)
 
-current_df = dataset.get_dataframe()
-if 'path' not in current_df or 'class' not in current_df or 'comment' not in current_df:
+current_schema_columns = [c['name'] for c in dataset.get_schema()['columns']]
+if 'path' not in current_schema_columns or 'class' not in current_schema_columns or 'comment' not in current_schema_columns:
     raise ValueError("The target dataset should have a columns: 'path', 'class' and 'comment'")
 
+try:
+    current_df = dataset.get_dataframe()
+except:
+    print("Dataset probably empty")
+    current_df = pd.DataFrame(columns=current_schema_columns, index=[])
+    
 labelled = set(current_df['path'])
 all_paths = set(folder.list_paths_in_partition())
 remaining = all_paths - labelled
