@@ -1,4 +1,4 @@
-from dataiku import Dataset
+import dataiku
 
 def do(payload, config, plugin_config, inputs):
     if 'check_dataset' in payload:
