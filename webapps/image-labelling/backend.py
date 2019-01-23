@@ -1,16 +1,20 @@
-import dataiku
-from flask import request
-from base64 import b64encode
 from dataiku.customwebapp import *
-import pandas as pd
 
 dataset_name = get_webapp_config()["dataset"]
 folder_id = get_webapp_config()["folder"]
 
+import dataiku
+from dataiku.core import schema_handling
+from flask import request
+from base64 import b64encode
+import pandas as pd
+import numpy as np
+
 dataset = dataiku.Dataset(dataset_name)
 folder = dataiku.Folder(folder_id)
 
-current_schema_columns = [c['name'] for c in dataset.read_schema()]
+current_schema = dataset.read_schema()
+current_schema_columns = [c['name'] for c in current_schema]
 if 'path' not in current_schema_columns or 'class' not in current_schema_columns or 'comment' not in current_schema_columns:
     raise ValueError("The target dataset should have a columns: 'path', 'class' and 'comment'")
 
@@ -19,6 +23,11 @@ try:
 except:
     print("Dataset probably empty")
     current_df = pd.DataFrame(columns=current_schema_columns, index=[])
+    for col in current_schema:
+        n = col["name"]
+        t = col["type"]
+        t = schema_handling.DKU_PANDAS_TYPES_MAP.get(t, np.object_)
+        current_df[n] = current_df[n].astype(t)
     
 labelled = set(current_df['path'])
 all_paths = set(folder.list_paths_in_partition())
@@ -30,27 +39,29 @@ def get_image():
     print('path: ' +str(path))
     with folder.get_download_stream(path) as s:
         data = b64encode(s.read())
-    return json.dumps({"status": "ok", "data": data})
+    return json.dumps({"data": data})
 
 @app.route('/next')
 def next():
     global current_df, all_paths, labelled, remaining
-    return json.dumps({"status": "ok", "nextPath": getNextPath(), "labelled": len(labelled), "total": len(all_paths), "skipped": len(all_paths) - len(labelled) - len(remaining) - 1}) # -1 because the current is not counted
+    if len(remaining) > 0:
+        next_path = remaining.pop()
+    else:
+        next_path = None
+    total_count = len(all_paths)
+    skipped_count = len(all_paths) - len(labelled) - len(remaining) - 1 # -1 because the current is not counted
+    labelled_count = len(labelled)
+    by_category = current_df['class'].value_counts().to_dict()
+    return json.dumps({"nextPath": next_path, "labelled": labelled_count, "total": total_count, "skipped": skipped_count, "byCategory" : by_category}) 
 
 @app.route('/classify')
 def classify():
     global current_df, all_paths, labelled, remaining
     path = request.args.get('path')
-    cat = request.args.get('cat')
+    cat = request.args.get('category')
     comment = request.args.get('comment')
     
     current_df = current_df.append({'path': path, 'class': cat, 'comment': comment}, ignore_index=True)
-    dataset.write_with_schema(current_df)
+    dataset.write_from_dataframe(current_df)
     labelled.add(path)
-    return json.dumps({"status": "ok", "nextPath": getNextPath(), "labelled": len(labelled), "total": len(all_paths), "skipped": len(all_paths) - len(labelled) - len(remaining) - 1}) # -1 because the current is not counted
-
-def getNextPath():
-    if len(remaining) > 0:
-        return remaining.pop()
-    else:
-        return None
+    return next()
