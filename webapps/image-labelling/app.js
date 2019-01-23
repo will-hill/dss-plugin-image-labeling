@@ -8,7 +8,11 @@ function drawApp(categories) {
         alert(e.message + ' Go to settings tab');
     }
     drawCategories(categories);
-    $('[data-toggle="tooltip"]').tooltip(); 
+    try {
+        $('[data-toggle="tooltip"]').tooltip(); 
+    } catch (e) {
+        console.error(e);
+    } 
     $('#skip').click(next)
     next();
 }
