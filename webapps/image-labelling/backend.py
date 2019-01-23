@@ -9,7 +9,7 @@ folder_id = get_webapp_config()["folder"]
 dataset = dataiku.Dataset(dataset_name)
 folder = dataiku.Folder(folder_id)
 
-current_schema_columns = [c['name'] for c in dataset.get_schema()['columns']]
+current_schema_columns = [c['name'] for c in dataset.read_schema()]
 if 'path' not in current_schema_columns or 'class' not in current_schema_columns or 'comment' not in current_schema_columns:
     raise ValueError("The target dataset should have a columns: 'path', 'class' and 'comment'")
 
