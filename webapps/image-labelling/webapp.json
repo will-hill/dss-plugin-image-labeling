@@ -7,6 +7,10 @@
     "baseType": "STANDARD",
     "hasBackend": "true",
     "standardWebAppLibraries" : ["jquery", "dataiku", "bootstrap"],
+    
+    "paramsTemplate" : "setup.html",
+    "paramsModule" : "labellingSetup",
+    "paramsPythonSetup" : "setup.py",
     "params": [
         {
             "name": "folder",
