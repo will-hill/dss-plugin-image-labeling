@@ -1,34 +1,41 @@
 let categories = (dataiku.getWebAppConfig().categories||[]).map(it => ({name: it.from, description: it.to}));
 let currentPath;
 
-function drawApp(allItems) {
+function drawApp(categories) {
     try {
         dataiku.checkWebAppParameters();
     } catch (e) {
         alert(e.message + ' Go to settings tab');
     }
     drawCategories(categories);
+    $('[data-toggle="tooltip"]').tooltip(); 
     $('#skip').click(next)
     next();
 }
 
+function drawCategory(category) {
+    var buttonHtml;
+    if (category.description) {
+        // button with description tooltip
+        buttonHtml = `<button id="cat_${category.name}" class="btn btn-default category-button" data-toggle="tooltip" data-placement="bottom" title="${category.description}"><div class="ratio"></div>${category.name}&nbsp;<i class="icon-info-sign"></i></button>`
+    } else {
+        // simple button
+        buttonHtml = `<button id="cat_${category.name}" class="btn btn-default category-button">${category.name}<div class="ratio"></div></button>`
+    }
+    const button = $(buttonHtml)
+    $('#category-buttons').append(button);
+}
+
 function drawCategories(categories) {
     $('#category-buttons').empty();
-    $('#category-descriptions').empty();
-    categories.forEach(cat => {
-        const button = $(`<button class="cat-button">${cat.name}</button>`)
-        $('#category-buttons').append(button);
-        if (cat.description) {
-            const desc = $(`<li><strong>${cat.name}: </strong>${cat.description}</li>`)
-            $('#category-descriptions').append(desc);
-        }
-    });
-    if (categories.some(c => c.description)) {
-        $('.right').show();
-    }
+    categories.forEach(drawCategory);
     $('#category-buttons button').each((idx, button) => {
         $(button).click(() => { classify(categories[idx].name)})
     });
+}
+
+function setCategoryCount(name, count, total) {
+    $(`#cat_${name}>.ratio`).width('' + (100 * count / total) + '%')
 }
 
 function next() {
@@ -47,9 +54,9 @@ function drawItem() {
     }
 }
 
-function classify(cat) {
+function classify(category) {
     const comment = $('#comment').val()
-    webappBackend.get('classify', {path: currentPath, comment: $('#comment').val(), cat: cat}, updateProgress);
+    webappBackend.get('classify', {path: currentPath, comment: $('#comment').val(), category: category}, updateProgress);
 }
 
 function updateProgress(resp) {
@@ -57,6 +64,7 @@ function updateProgress(resp) {
     $('#total').text(resp.total);
     $('#labelled').text(resp.labelled);
     $('#skipped').text(resp.skipped);
+    $.each(resp.byCategory, (name, count) => setCategoryCount(name, count, resp.total))
     drawItem();
 }
 
@@ -73,4 +81,4 @@ const webappBackend = (function() {
     return {getUrl, get, post}
 })();
 
-drawApp();
+drawApp(categories);
