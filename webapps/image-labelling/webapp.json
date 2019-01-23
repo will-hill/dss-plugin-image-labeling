@@ -19,7 +19,7 @@
             "name": "dataset",
             "type": "DATASET",
             "label": "Dataset for labels",
-            "description": "",
+            "description": "Must have path, class and comment columns",
             "mandatory": true,
             "canSelectForeign": false
         },
