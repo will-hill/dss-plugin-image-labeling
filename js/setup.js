@@ -7,7 +7,7 @@ app.controller('LabellingSetupController', function($scope) {
     var checkDataset = function() {
         // the parameter to callPythonDo() is passed to the do() method as the payload
         // the return value of the do() method comes back as the data parameter of the fist function()
-        $scope.callPythonDo({'check_dataset':True}).then(function(data) {
+        $scope.callPythonDo({'check_dataset':true}).then(function(data) {
             // success
             $scope.datasetCheckResult = data;
         }, function(data) {
