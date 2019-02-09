@@ -2,12 +2,12 @@
     "id" : "image-labelling",
     "version" : "0.0.1",
     "meta" : {
-        "label" : "Plugin image labelling",
-        "description" : "",
+        "label" : "Image labeling",
+        "description" : "Manually classify images for use in supervised learning",
         "author" : "Dataiku",
-        "icon" : "icon-puzzle-piece",
+        "icon" : "icon-picture",
         "licenseInfo" : "Apache Software License",
-        "url" : "https://www.dataiku.com/dss/plugins/info/image-labelling.html",
-        "tags" : ["images", "deep learning"]
+        "url" : "https://www.dataiku.com/dss/plugins/info/image-labeling.html",
+        "tags" : ["Deep Learning", "Images"]
     }
 }
