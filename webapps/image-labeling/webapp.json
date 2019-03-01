@@ -23,7 +23,8 @@
             "label":"Labels", 
             "description": "Dataset to save the labels into", 
             "mandatory": true, 
-            "canSelectForeign": false
+            "canSelectForeign": false,
+            "canCreateDataset": true
         },
         {
             "name": "categories",
