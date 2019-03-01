@@ -5,16 +5,22 @@ function drawApp(categories) {
     try {
         dataiku.checkWebAppParameters();
     } catch (e) {
-        alert(e.message + ' Go to settings tab');
+        displayFatalError(e.message + ' Go to settings tab.');
+        return;
     }
     drawCategories(categories);
     try {
-        $('[data-toggle="tooltip"]').tooltip(); 
+        $('[data-toggle="tooltip"]').tooltip();
     } catch (e) {
         console.warn(e);
-    } 
+    }
     $('#skip').click(next)
     next();
+}
+
+function displayFatalError(err) {
+    $('#app').hide();
+    $('#fatal-error').text(err.message ? err.message : err).show();
 }
 
 function drawCategory(category) {
@@ -43,14 +49,16 @@ function setCategoryCount(name, count, total) {
 }
 
 function next() {
-    webappBackend.get('next', {}, updateProgress);
+    webappBackend.get('next')
+        .then(updateProgress)
+        .catch(displayFatalError);
 }
 
 function drawItem() {
     if (!currentPath || !currentPath.length) {
         $('#app').html('<div id="done"><div>The End</div><p>All the images were labelled (or skipped, refresh to see the skipped ones)</p></div>')
     } else {
-        webappBackend.get('get-image-base64', {path: currentPath}, function(resp) {
+        webappBackend.get('get-image-base64', {path: currentPath}).then(function(resp) {
             let contentType = 'image/png';
             $('#item-to-classify').html(`<img src="data:${contentType};base64,${resp.data}" />`);
             $('#comment').val('')
@@ -70,19 +78,7 @@ function updateProgress(resp) {
     $('#skipped').text(resp.skipped);
     $.each(resp.byCategory, (name, count) => setCategoryCount(name, count, resp.total))
     drawItem();
+    $('#app').show();
 }
-
-const webappBackend = (function() {
-    function getUrl(path) {
-        return dataiku.getWebAppBackendUrl(path);
-    }
-    function get(path, args, done, fail) {
-        return $.getJSON(getUrl(path), args, done, fail);
-    }
-    function post(path, args, done, fail) {
-        return $.post(getUrl(path), args, done, fail);
-    }
-    return {getUrl, get, post}
-})();
 
 drawApp(categories);

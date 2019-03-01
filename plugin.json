@@ -1,13 +1,13 @@
 {
-    "id" : "image-labeling",
-    "version" : "0.0.1",
-    "meta" : {
-        "label" : "Image labeling",
-        "description" : "Manually classify images for use in supervised learning",
-        "author" : "Dataiku",
-        "icon" : "icon-picture",
-        "licenseInfo" : "Apache Software License",
-        "url" : "https://www.dataiku.com/dss/plugins/info/image-labeling.html",
-        "tags" : ["Deep Learning", "Images"]
+    "id": "image-labeling",
+    "version": "0.1.0",
+    "meta": {
+        "label": "Image labeling",
+        "description": "Manually classify images for use in supervised learning",
+        "author": "Dataiku (Joachim Zentici)",
+        "icon": "icon-picture",
+        "licenseInfo": "Apache Software License",
+        "url": "https://www.dataiku.com/dss/plugins/info/image-labeling.html",
+        "tags": ["Deep Learning", "Images"]
     }
 }

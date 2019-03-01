@@ -1,6 +1,6 @@
-var app = angular.module('labelling.setup.module', []);
+var app = angular.module('labeling.setup.module', []);
 
-app.controller('LabellingSetupController', function($scope) {
+app.controller('LabelingSetupController', function($scope) {
     $scope.folderParam = {"type":"FOLDER", "name":"folder", "label":"Images", "description":"Folder containing the images to label", "mandatory": true, "canSelectForeign": true};
     $scope.datasetParam = {"type":"DATASET", "name":"dataset", "label":"Labels", "description":"Dataset to save the labels into", "mandatory": true, "canSelectForeign": false};
     $scope.categoriesParam = {"name": "categories", "type": "KEY_VALUE_LIST", "label": "Categories", "description": "Category name → optional description", "mandatory": true}

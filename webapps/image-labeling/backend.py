@@ -1,8 +1,5 @@
 from dataiku.customwebapp import *
 
-dataset_name = get_webapp_config()["dataset"]
-folder_id = get_webapp_config()["folder"]
-
 import dataiku
 from dataiku.core import schema_handling
 from flask import request
@@ -10,13 +7,27 @@ from base64 import b64encode
 import pandas as pd
 import numpy as np
 
+
+if "folder" not in get_webapp_config():
+    raise ValueError("Input folder not specified. Go to settings tab.")
+if "dataset" not in get_webapp_config():
+    raise ValueError("Output dataset not specified. Go to settings tab.")
+
+dataset_name = get_webapp_config()["dataset"]
+folder_id = get_webapp_config()["folder"]
+
 dataset = dataiku.Dataset(dataset_name)
 folder = dataiku.Folder(folder_id)
 
-current_schema = dataset.read_schema()
-current_schema_columns = [c['name'] for c in current_schema]
+try:
+    current_schema = dataset.read_schema()
+    current_schema_columns = [c['name'] for c in current_schema]
+except:
+    current_schema_columns = ["path", "class", "comment"]
+    dataset.write_schema([{"name": "path", "type": "string"}, {"name": "class", "type": "string"}, {"name": "comment", "type": "string"}])
+    
 if 'path' not in current_schema_columns or 'class' not in current_schema_columns or 'comment' not in current_schema_columns:
-    raise ValueError("The target dataset should have a columns: 'path', 'class' and 'comment'")
+    raise ValueError("The target dataset should have columns: 'path', 'class' and 'comment'. Please edit the schema in the dataset settings.")
 
 try:
     current_df = dataset.get_dataframe()

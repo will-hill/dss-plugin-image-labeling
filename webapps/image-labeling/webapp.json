@@ -7,11 +7,34 @@
     "baseType": "STANDARD",
     "hasBackend": "true",
     "standardWebAppLibraries" : ["jquery", "dataiku", "bootstrap", "font_awesome"],
+
+    "params": [
+        {
+            "type": "FOLDER", 
+            "name": "folder", 
+            "label": "Images", 
+            "description": "Folder containing the images to label", 
+            "mandatory": true, 
+            "canSelectForeign": true
+        },
+        {
+            "type": "DATASET", 
+            "name": "dataset", 
+            "label":"Labels", 
+            "description": "Dataset to save the labels into", 
+            "mandatory": true, 
+            "canSelectForeign": false
+        },
+        {
+            "name": "categories",
+            "type": "KEY_VALUE_LIST",
+            "label": "Categories",
+            "description": "Category name → optional description",
+            "mandatory": true
+        }
+    ],
     
-    "paramsTemplate" : "setup.html",
-    "paramsModule" : "labelling.setup.module",
-    "paramsPythonSetup" : "setup.py",
-    "params": [],
+    // Will appear in the action menu for folders
     "roles": [
         {"type": "FOLDER", "targetParamsKey": "folder"}
     ]
