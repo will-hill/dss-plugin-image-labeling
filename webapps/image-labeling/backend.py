@@ -59,6 +59,7 @@ def get_frame():
     # cropped_thumb0006_score_78.250237.png
     with objects.get_download_stream(path) as s:
         data = b64encode(s.read())
+    print('FRAME GOTTEN')        
     return json.dumps({"data": data})
 
 
