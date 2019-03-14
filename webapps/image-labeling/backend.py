@@ -81,9 +81,11 @@ def next():
 @app.route('/classify')
 def classify():
     global current_df, all_paths, labelled, remaining
+    
     path = request.args.get('path')
     cat = request.args.get('category')
     comment = request.args.get('comment')
+    
     current_df = current_df.append({'path': path, 'class': cat, 'comment': comment}, ignore_index=True)
     print('CLASSIFY - current_df: ' + current_df)
     dataset.write_from_dataframe(current_df)
