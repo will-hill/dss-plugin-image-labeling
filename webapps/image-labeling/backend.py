@@ -6,6 +6,7 @@ from flask import request
 from base64 import b64encode
 import pandas as pd
 import numpy as np
+import re
 
 
 if "objects" not in get_webapp_config():
@@ -55,7 +56,6 @@ def get_frame():
     print('path: ' +str(path))
     print('determining scored image path...')
     print(str(path))
-    # scored_thumb0006.png
     # cropped_thumb0006_score_78.250237.png
     path = path.replace('cropped','scored')
     # scored_thumb0006.png    
