@@ -60,6 +60,7 @@ function drawItem() {
     } else {
         webappBackend.get('get-image-base64', {path: currentPath}).then(function(resp) {
             let contentType = 'image/png';
+            $('#frame').html(`<img src="data:${contentType};base64,${resp.data}" />`);
             $('#item-to-classify').html(`<img src="data:${contentType};base64,${resp.data}" />`);
             $('#comment').val('')
         });
