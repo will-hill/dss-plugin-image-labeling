@@ -60,7 +60,7 @@ def get_frame():
     # scored_thumb0006.png    
     path = re.sub('_score_\d+\.\d+\.png','.png',path).replace('cropped_','scored_')
     print('GET FRAME: ' + path)
-    with objects.get_download_stream(path) as s:
+    with frames.get_download_stream(path) as s:
         data = b64encode(s.read())
     print('FRAME GOTTEN')        
     return json.dumps({"data": data})
