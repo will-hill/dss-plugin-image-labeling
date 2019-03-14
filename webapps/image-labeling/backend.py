@@ -51,18 +51,10 @@ remaining = all_paths - labelled
 
 @app.route('/get-frame')
 def get_frame():
-    print('GETTING FRAME')
     path = request.args.get('path')
-    print('path: ' +str(path))
-    print('determining scored image path...')
-    print(str(path))
-    # cropped_thumb0006_score_78.250237.png
-    # scored_thumb0006.png    
     path = re.sub('_score_\d+\.\d+\.png','.png',path).replace('cropped_','scored_')
-    print('GET FRAME: ' + path)
     with frames.get_download_stream(path) as s:
         data = b64encode(s.read())
-    print('FRAME GOTTEN')        
     return json.dumps({"data": data})
 
 
