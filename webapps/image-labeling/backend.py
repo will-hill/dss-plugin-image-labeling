@@ -89,7 +89,7 @@ def classify():
     print('cat: ' + cat)
     
     comment = request.args.get('comment')
-    print('cat: ' + cat)    
+    print('comment: ' + comment)    
     
     current_df = current_df.append({'path': path, 'class': cat, 'comment': comment}, ignore_index=True)
     print('CLASSIFY - current_df: ' + current_df)
