@@ -57,7 +57,6 @@ def get_frame():
         data = b64encode(s.read())
     return json.dumps({"data": data})
 
-
 @app.route('/get-image-base64')
 def get_image():
     path = request.args.get('path')
