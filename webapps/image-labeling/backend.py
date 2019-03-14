@@ -53,6 +53,7 @@ def get_image():
     path = request.args.get('path')
     print('path: ' +str(path))
     print('determining scored image path...')
+    # scored_thumb0000.png
     with objects.get_download_stream(path) as s:
         data = b64encode(s.read())
     return json.dumps({"data": data})
