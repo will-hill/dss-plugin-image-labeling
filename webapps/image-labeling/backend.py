@@ -49,7 +49,8 @@ all_paths = set(objects.list_paths_in_partition())
 remaining = all_paths - labelled
 
 @app.route('/get-frame')
-def get_image():
+def get_frame():
+    print('GETTING FRAME')
     path = request.args.get('path')
     print('path: ' +str(path))
     print('determining scored image path...')
