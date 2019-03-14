@@ -59,11 +59,13 @@ function drawItem() {
         $('#app').html('<div id="done"><div>The End</div><p>All the images were labelled (or skipped, refresh to see the skipped ones)</p></div>')
     } else {
         webappBackend.get('get-image-base64', {path: currentPath}).then(function(resp) {
+            console.log('object');
             let contentType = 'image/png';
             $('#item-to-classify').html(`<img src="data:${contentType};base64,${resp.data}" />`);
             $('#comment').val('')
         });
         webappBackend.get('get-image-base64', {path: currentPath}).then(function(resp) {
+            console.log('frame');
             let contentType = 'image/png';
             $('#frame').html(`<img src="data:${contentType};base64,${resp.data}" />`);
             $('#comment').val('')
