@@ -83,6 +83,7 @@ def classify():
     global current_df, all_paths, labelled, remaining
     
     path = request.args.get('path')
+    print('path: ' + path)
     cat = request.args.get('category')
     comment = request.args.get('comment')
     
