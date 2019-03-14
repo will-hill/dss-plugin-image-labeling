@@ -8,8 +8,10 @@ import pandas as pd
 import numpy as np
 
 
-if "folder" not in get_webapp_config():
-    raise ValueError("Input folder not specified. Go to settings tab.")
+if "objects" not in get_webapp_config():
+    raise ValueError("Objects folder not specified. Go to settings tab.")
+if "frames" not in get_webapp_config():
+    raise ValueError("Frames folder not specified. Go to settings tab.")
 if "dataset" not in get_webapp_config():
     raise ValueError("Output dataset not specified. Go to settings tab.")
 
