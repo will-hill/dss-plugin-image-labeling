@@ -28,6 +28,11 @@ textarea::-webkit-input-placeholder, textarea::-moz-placeholder, textarea:-ms-in
     overflow: hidden;
 
 }
+#frame img {
+    min-height: 150;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
 #item-to-classify img {
     min-height: 150;
     border: 1px solid #ddd;
