@@ -58,7 +58,6 @@ def get_frame():
     print('determining scored image path...')
     print(str(path))
     # cropped_thumb0006_score_78.250237.png
-    path = path.replace('cropped','scored')
     # scored_thumb0006.png    
     with objects.get_download_stream(path) as s:
         data = b64encode(s.read())
