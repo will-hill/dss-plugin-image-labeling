@@ -48,6 +48,19 @@ labelled = set(current_df['path'])
 all_paths = set(objects.list_paths_in_partition())
 remaining = all_paths - labelled
 
+@app.route('/get-frame')
+def get_image():
+    path = request.args.get('path')
+    print('path: ' +str(path))
+    print('determining scored image path...')
+    print(str(path))
+    # scored_thumb0006.png
+    # cropped_thumb0006_score_78.250237.png
+    with objects.get_download_stream(path) as s:
+        data = b64encode(s.read())
+    return json.dumps({"data": data})
+
+
 @app.route('/get-image-base64')
 def get_image():
     path = request.args.get('path')
