@@ -53,6 +53,7 @@ remaining = all_paths - labelled
 def get_frame():
     print('GETTING FRAME')
     path = request.args.get('path')
+    path = re.sub('_score_\d+\.\d+\.png','.png',path).replace('cropped_','scored_')
     print('path: ' +str(path))
     print('determining scored image path...')
     print(str(path))
