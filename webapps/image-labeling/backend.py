@@ -81,17 +81,11 @@ def next():
 
 @app.route('/classify')
 def classify():
-    print('CLASSIFY - 1')
     global current_df, all_paths, labelled, remaining
-    print('CLASSIFY - 2')    
     path = request.args.get('path')
-    print('CLASSIFY - 3')    
     cat = request.args.get('category')
-    print('CLASSIFY - 4')    
     comment = request.args.get('comment')
-    print('CLASSIFY - 5')    
     current_df = current_df.append({'path': path, 'class': cat, 'comment': comment}, ignore_index=True)
-    print('CLASSIFY - 6')    
     dataset.write_from_dataframe(current_df)
     print('CLASSIFY - 7')    
     labelled.add(path)
