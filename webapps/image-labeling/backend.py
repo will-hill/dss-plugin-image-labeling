@@ -52,6 +52,7 @@ remaining = all_paths - labelled
 def get_image():
     path = request.args.get('path')
     print('path: ' +str(path))
+    print('determining scored image path...')
     with objects.get_download_stream(path) as s:
         data = b64encode(s.read())
     return json.dumps({"data": data})
