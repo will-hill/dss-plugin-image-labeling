@@ -16,10 +16,12 @@ if "dataset" not in get_webapp_config():
     raise ValueError("Output dataset not specified. Go to settings tab.")
 
 dataset_name = get_webapp_config()["dataset"]
-folder_id = get_webapp_config()["folder"]
+objects_id = get_webapp_config()["objects"]
+frames_id = get_webapp_config()["frames"]
 
 dataset = dataiku.Dataset(dataset_name)
-folder = dataiku.Folder(folder_id)
+objects = dataiku.Folder(objects_id)
+frames = dataiku.Folder(frames_id)
 
 try:
     current_schema = dataset.read_schema()
@@ -43,14 +45,14 @@ except:
         current_df[n] = current_df[n].astype(t)
     
 labelled = set(current_df['path'])
-all_paths = set(folder.list_paths_in_partition())
+all_paths = set(objects.list_paths_in_partition())
 remaining = all_paths - labelled
 
 @app.route('/get-image-base64')
 def get_image():
     path = request.args.get('path')
     print('path: ' +str(path))
-    with folder.get_download_stream(path) as s:
+    with objects.get_download_stream(path) as s:
         data = b64encode(s.read())
     return json.dumps({"data": data})
 
