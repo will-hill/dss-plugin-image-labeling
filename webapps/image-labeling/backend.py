@@ -89,6 +89,7 @@ def next():
 
 @app.route('/classify')
 def classify():
+    print('CLASSIFY')
     global current_df, all_paths, labelled, remaining
     path = request.args.get('path')
     cat = request.args.get('category')
