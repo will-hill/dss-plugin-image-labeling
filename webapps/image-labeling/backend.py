@@ -83,7 +83,7 @@ def classify():
 
     print('CLASSIFY')
     
-    print('current_df.shape: ' + current_df.shape[0])
+    print('current_df.shape: ' + str(current_df.shape[0])
     
     path = request.args.get('path')
     print('path: ' + path)
