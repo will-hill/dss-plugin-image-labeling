@@ -84,8 +84,12 @@ def classify():
     
     path = request.args.get('path')
     print('path: ' + path)
+    
     cat = request.args.get('category')
+    print('cat: ' + cat)
+    
     comment = request.args.get('comment')
+    print('cat: ' + cat)    
     
     current_df = current_df.append({'path': path, 'class': cat, 'comment': comment}, ignore_index=True)
     print('CLASSIFY - current_df: ' + current_df)
