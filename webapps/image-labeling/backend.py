@@ -53,7 +53,6 @@ remaining = all_paths - labelled
 def get_frame():
     print('GETTING FRAME')
     path = request.args.get('path')
-    path = re.sub('_score_\d+\.\d+\.png','.png',path).replace('cropped_','scored_')
     print('path: ' +str(path))
     print('determining scored image path...')
     print(str(path))
@@ -68,11 +67,6 @@ def get_frame():
 @app.route('/get-image-base64')
 def get_image():
     path = request.args.get('path')
-    print('path: ' +str(path))
-    print('determining scored image path...')
-    print(str(path))
-    # scored_thumb0006.png
-    # cropped_thumb0006_score_78.250237.png
     with objects.get_download_stream(path) as s:
         data = b64encode(s.read())
     return json.dumps({"data": data})
