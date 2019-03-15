@@ -94,6 +94,7 @@ def classify():
     comment = request.args.get('comment')
     print('comment: ' + comment)    
     
+    print('ABOUT TO APPEND')
     current_df = current_df.append({'path': path, 'class': cat, 'comment': comment}, ignore_index=True)
 
     dataset.write_from_dataframe(current_df)
