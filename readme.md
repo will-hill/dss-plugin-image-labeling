@@ -4,6 +4,9 @@ This Dataiku DSS plugin helps you verify objects detected in frames in a DSS man
 
 It contains a single web app that presents each frame and a detected object for verification, stores the results in a dataframe.
 
+
+![UI](obj_det_valid.jpg?raw=true "Title")
+
 This plugin borrows heavily from 
 
 https://github.com/dataiku/dss-plugin-image-labeling
