@@ -76,6 +76,7 @@ function drawItem() {
 function classify(category) {
     const comment = $('#comment_text_area').val();
     webappBackend.get('classify', {path: currentPath, comment: $('#comment_text_area').val(), category: category}, updateProgress);
+    next();
 }
 
 function updateProgress(resp) {
