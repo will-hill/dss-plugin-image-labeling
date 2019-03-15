@@ -74,8 +74,9 @@ function drawItem() {
 }
 
 function classify(category) {
-    cmnt_txt_area = $('#comment_text_area').val()
-    const comment = $('#comment').val()
+    cmnt_txt_area = $('#comment_text_area').val();
+    console.log(cmnt_txt_area);
+    const comment = $('#comment').val();
     webappBackend.get('classify', {path: currentPath, comment: $('#comment').val(), category: category}, updateProgress);
 }
 
