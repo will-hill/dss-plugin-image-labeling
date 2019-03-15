@@ -1,12 +1,16 @@
-# Image labeling plugin
+# Object Detection Validation plugin
 
-This Dataiku DSS plugin helps you label images contained in a DSS managed folder.
+This Dataiku DSS plugin helps you verify objects detected in frames in a DSS managed folder.
 
-For now, it contains a single webapp that helps you associate a single category to each image.
+It contains a single web app that presents each frame and a detected object for verification, stores the results in a dataframe.
+
+This plugin borrows heavily from 
+
+https://github.com/dataiku/dss-plugin-image-labeling
 
 ## Documentation
 
-https://www.dataiku.com/dss/plugins/info/image-labeling.html
+https://github.com/will-hill/will-hill-dss-plugin-obj-detect-validation
 
 ## License
 
