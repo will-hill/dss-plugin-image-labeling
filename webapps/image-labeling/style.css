@@ -25,7 +25,6 @@ textarea::-webkit-input-placeholder, textarea::-moz-placeholder, textarea:-ms-in
 }
 #item-to-classify {
     flex: 1 1 100px;
-
 }
 #frame img {
     min-height: 200px;
