@@ -32,7 +32,7 @@ textarea::-webkit-input-placeholder, textarea::-moz-placeholder, textarea:-ms-in
     box-sizing: border-box;
 }
 #item-to-classify img {
-    max-height: 800px;
+    max-height: 700px;
     border: 3px solid blue;
     box-sizing: border-box;
 }
