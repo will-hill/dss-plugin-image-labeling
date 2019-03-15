@@ -77,7 +77,7 @@ function classify(category) {
     cmnt_txt_area = $('#comment_text_area').val();
     console.log(cmnt_txt_area);
     const comment = $('#comment').val();
-    webappBackend.get('classify', {path: currentPath, comment: $('#comment').val(), category: category}, updateProgress);
+    webappBackend.get('classify', {path: currentPath, comment: $('#comment_text_area').val(), category: category}, updateProgress);
 }
 
 function updateProgress(resp) {
