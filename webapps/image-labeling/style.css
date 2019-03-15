@@ -34,7 +34,7 @@ textarea::-webkit-input-placeholder, textarea::-moz-placeholder, textarea:-ms-in
 }
 #item-to-classify img {
     min-height: 200px;
-    border: 1px solid #ddd;
+    border: 1px solid #333;
     box-sizing: border-box;
 }
 #category-buttons, #skip-buttons {
