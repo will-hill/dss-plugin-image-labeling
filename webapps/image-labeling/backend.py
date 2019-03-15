@@ -97,7 +97,9 @@ def classify():
     print('APPENDING....')
     current_df = current_df.append({'path': path, 'class': cat, 'comment': comment}, ignore_index=True)
 
+    print('WRITE....')
     dataset.write_from_dataframe(current_df)
+    
     print('CLASSIFY - 7')    
     labelled.add(path)
     print('CLASSIFY - 8')    
