@@ -29,12 +29,12 @@ textarea::-webkit-input-placeholder, textarea::-moz-placeholder, textarea:-ms-in
 
 }
 #frame img {
-    min-height: 150;
+    min-height: 200;
     border: 1px solid #ddd;
     box-sizing: border-box;
 }
 #item-to-classify img {
-    min-height: 150;
+    min-height: 200;
     border: 1px solid #ddd;
     box-sizing: border-box;
 }
