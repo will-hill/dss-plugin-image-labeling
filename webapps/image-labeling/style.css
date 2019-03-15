@@ -29,7 +29,6 @@ textarea::-webkit-input-placeholder, textarea::-moz-placeholder, textarea:-ms-in
 
 }
 #frame img {
-    min-height: 200px;
     border: 1px solid #ddd;
     box-sizing: border-box;
 }
