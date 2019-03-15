@@ -30,11 +30,11 @@ textarea::-webkit-input-placeholder, textarea::-moz-placeholder, textarea:-ms-in
 }
 #frame img {
     min-height: 200px;
-    border: 1px solid red;
+    border: 1px solid #0d0;
     box-sizing: border-box;
 }
 #item-to-classify img {
-    border: 1px solid #d00;
+    border: 3px solid blue;
     box-sizing: border-box;
 }
 #category-buttons, #skip-buttons {
